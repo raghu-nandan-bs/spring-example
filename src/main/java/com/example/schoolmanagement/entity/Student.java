@@ -77,4 +77,12 @@ public class Student {
   public void setPhoneNumber(String phoneNumber) {
     this.phoneNumber = phoneNumber;
   }
+
+  public Set<Course> getSubscibedCourses() {
+    return subscibedCourses;
+  }
+
+  public void setSubscibedCourses(Set<Course> subscibedCourses) {
+    this.subscibedCourses = subscibedCourses;
+  }
 }

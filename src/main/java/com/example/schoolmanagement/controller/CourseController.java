@@ -1,9 +1,11 @@
 package com.example.schoolmanagement.controller;
 
 import com.example.schoolmanagement.entity.Course;
+import com.example.schoolmanagement.entity.Student;
 import com.example.schoolmanagement.repository.CourseRepository;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -49,6 +51,15 @@ public class CourseController {
     if (courseRepository.existsById(id)) {
       courseRepository.deleteById(id);
       return ResponseEntity.ok().build();
+    }
+    return ResponseEntity.notFound().build();
+  }
+
+  @GetMapping("/{id}/students")
+  public ResponseEntity<Set<Student>> getCourseStudents(@PathVariable Long id) {
+    Optional<Course> course = courseRepository.findById(id);
+    if (course.isPresent()) {
+      return ResponseEntity.ok(course.get().getSubscriptions());
     }
     return ResponseEntity.notFound().build();
   }

@@ -59,4 +59,12 @@ public class Course {
   public void setCredits(int credits) {
     this.credits = credits;
   }
+
+  public Set<Student> getSubscriptions() {
+    return subscriptions;
+  }
+
+  public void setSubscriptions(Set<Student> subscriptions) {
+    this.subscriptions = subscriptions;
+  }
 }
