@@ -1,0 +1,10 @@
+com/example/schoolmanagement/controller/StudentController.class
+com/example/schoolmanagement/entity/Course.class
+com/example/schoolmanagement/entity/Teacher.class
+com/example/schoolmanagement/repository/StudentRepository.class
+com/example/schoolmanagement/SchoolManagementApplication.class
+com/example/schoolmanagement/entity/Student.class
+com/example/schoolmanagement/repository/TeacherRepository.class
+com/example/schoolmanagement/repository/CourseRepository.class
+com/example/schoolmanagement/controller/CourseController.class
+com/example/schoolmanagement/controller/TeacherController.class

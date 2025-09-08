@@ -1,0 +1,10 @@
+/home/raghu/code/p/spring-jpa/src/main/java/com/example/schoolmanagement/entity/Student.java
+/home/raghu/code/p/spring-jpa/src/main/java/com/example/schoolmanagement/controller/CourseController.java
+/home/raghu/code/p/spring-jpa/src/main/java/com/example/schoolmanagement/repository/CourseRepository.java
+/home/raghu/code/p/spring-jpa/src/main/java/com/example/schoolmanagement/entity/Course.java
+/home/raghu/code/p/spring-jpa/src/main/java/com/example/schoolmanagement/SchoolManagementApplication.java
+/home/raghu/code/p/spring-jpa/src/main/java/com/example/schoolmanagement/repository/TeacherRepository.java
+/home/raghu/code/p/spring-jpa/src/main/java/com/example/schoolmanagement/controller/TeacherController.java
+/home/raghu/code/p/spring-jpa/src/main/java/com/example/schoolmanagement/controller/StudentController.java
+/home/raghu/code/p/spring-jpa/src/main/java/com/example/schoolmanagement/entity/Teacher.java
+/home/raghu/code/p/spring-jpa/src/main/java/com/example/schoolmanagement/repository/StudentRepository.java
