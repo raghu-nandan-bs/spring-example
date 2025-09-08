@@ -1,6 +1,7 @@
 package com.example.schoolmanagement.entity;
 
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.util.Set;
 
 @Entity
@@ -27,6 +28,7 @@ public class Student {
           joinColumns = @JoinColumn(name = "student_id"),
           inverseJoinColumns = @JoinColumn(name = "course_id")
   )
+  @JsonManagedReference
   Set<Course> subscibedCourses;
 
   public Student() {}

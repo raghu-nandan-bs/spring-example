@@ -3,6 +3,7 @@ package com.example.schoolmanagement.controller;
 import com.example.schoolmanagement.entity.Course;
 import com.example.schoolmanagement.entity.Student;
 import com.example.schoolmanagement.repository.CourseRepository;
+import com.example.schoolmanagement.dto.CourseDto;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -28,19 +29,24 @@ public class CourseController {
   }
 
   @PostMapping
-  public Course createCourse(@RequestBody Course course) {
+  public Course createCourse(@RequestBody CourseDto courseDto) {
+    Course course = new Course(
+      courseDto.getName(),
+      courseDto.getDescription(),
+      courseDto.getCredits()
+    );
     return courseRepository.save(course);
   }
 
   @PutMapping("/{id}")
   public ResponseEntity<Course> updateCourse(
-      @PathVariable Long id, @RequestBody Course courseDetails) {
+      @PathVariable Long id, @RequestBody CourseDto courseDto) {
     Optional<Course> optionalCourse = courseRepository.findById(id);
     if (optionalCourse.isPresent()) {
       Course course = optionalCourse.get();
-      course.setName(courseDetails.getName());
-      course.setDescription(courseDetails.getDescription());
-      course.setCredits(courseDetails.getCredits());
+      course.setName(courseDto.getName());
+      course.setDescription(courseDto.getDescription());
+      course.setCredits(courseDto.getCredits());
       return ResponseEntity.ok(courseRepository.save(course));
     }
     return ResponseEntity.notFound().build();

@@ -1,6 +1,7 @@
 package com.example.schoolmanagement.entity;
 
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.util.Set;
 
 @Entity
@@ -14,6 +15,7 @@ public class Course {
   private String name;
 
   @ManyToMany(mappedBy = "subscibedCourses")
+  @JsonBackReference
   Set<Student> subscriptions;
 
   private String description;

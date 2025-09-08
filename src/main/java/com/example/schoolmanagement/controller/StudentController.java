@@ -4,6 +4,7 @@ import com.example.schoolmanagement.entity.Student;
 import com.example.schoolmanagement.entity.Course;
 import com.example.schoolmanagement.repository.StudentRepository;
 import com.example.schoolmanagement.repository.CourseRepository;
+import com.example.schoolmanagement.dto.StudentDto;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -31,20 +32,26 @@ public class StudentController {
   }
 
   @PostMapping
-  public Student createStudent(@RequestBody Student student) {
+  public Student createStudent(@RequestBody StudentDto studentDto) {
+    Student student = new Student(
+      studentDto.getFirstName(),
+      studentDto.getLastName(), 
+      studentDto.getEmail(),
+      studentDto.getPhoneNumber()
+    );
     return studentRepository.save(student);
   }
 
   @PutMapping("/{id}")
   public ResponseEntity<Student> updateStudent(
-      @PathVariable Long id, @RequestBody Student studentDetails) {
+      @PathVariable Long id, @RequestBody StudentDto studentDto) {
     Optional<Student> optionalStudent = studentRepository.findById(id);
     if (optionalStudent.isPresent()) {
       Student student = optionalStudent.get();
-      student.setFirstName(studentDetails.getFirstName());
-      student.setLastName(studentDetails.getLastName());
-      student.setEmail(studentDetails.getEmail());
-      student.setPhoneNumber(studentDetails.getPhoneNumber());
+      student.setFirstName(studentDto.getFirstName());
+      student.setLastName(studentDto.getLastName());
+      student.setEmail(studentDto.getEmail());
+      student.setPhoneNumber(studentDto.getPhoneNumber());
       return ResponseEntity.ok(studentRepository.save(student));
     }
     return ResponseEntity.notFound().build();

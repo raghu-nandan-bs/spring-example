@@ -2,6 +2,7 @@ package com.example.schoolmanagement.controller;
 
 import com.example.schoolmanagement.entity.Teacher;
 import com.example.schoolmanagement.repository.TeacherRepository;
+import com.example.schoolmanagement.dto.TeacherDto;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,21 +27,28 @@ public class TeacherController {
   }
 
   @PostMapping
-  public Teacher createTeacher(@RequestBody Teacher teacher) {
+  public Teacher createTeacher(@RequestBody TeacherDto teacherDto) {
+    Teacher teacher = new Teacher(
+      teacherDto.getFirstName(),
+      teacherDto.getLastName(),
+      teacherDto.getEmail(),
+      teacherDto.getDepartment(),
+      teacherDto.getPhoneNumber()
+    );
     return teacherRepository.save(teacher);
   }
 
   @PutMapping("/{id}")
   public ResponseEntity<Teacher> updateTeacher(
-      @PathVariable Long id, @RequestBody Teacher teacherDetails) {
+      @PathVariable Long id, @RequestBody TeacherDto teacherDto) {
     Optional<Teacher> optionalTeacher = teacherRepository.findById(id);
     if (optionalTeacher.isPresent()) {
       Teacher teacher = optionalTeacher.get();
-      teacher.setFirstName(teacherDetails.getFirstName());
-      teacher.setLastName(teacherDetails.getLastName());
-      teacher.setEmail(teacherDetails.getEmail());
-      teacher.setDepartment(teacherDetails.getDepartment());
-      teacher.setPhoneNumber(teacherDetails.getPhoneNumber());
+      teacher.setFirstName(teacherDto.getFirstName());
+      teacher.setLastName(teacherDto.getLastName());
+      teacher.setEmail(teacherDto.getEmail());
+      teacher.setDepartment(teacherDto.getDepartment());
+      teacher.setPhoneNumber(teacherDto.getPhoneNumber());
       return ResponseEntity.ok(teacherRepository.save(teacher));
     }
     return ResponseEntity.notFound().build();
