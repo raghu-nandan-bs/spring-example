@@ -1,6 +1,7 @@
 package com.example.schoolmanagement.entity;
 
 import jakarta.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "students")
@@ -19,6 +20,14 @@ public class Student {
   private String email;
 
   private String phoneNumber;
+
+  @ManyToMany
+  @JoinTable(
+          name = "student_course_subscriptions",
+          joinColumns = @JoinColumn(name = "student_id"),
+          inverseJoinColumns = @JoinColumn(name = "course_id")
+  )
+  Set<Course> subscibedCourses;
 
   public Student() {}
 

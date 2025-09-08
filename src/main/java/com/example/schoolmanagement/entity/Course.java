@@ -1,6 +1,7 @@
 package com.example.schoolmanagement.entity;
 
 import jakarta.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "courses")
@@ -11,6 +12,9 @@ public class Course {
 
   @Column(nullable = false)
   private String name;
+
+  @ManyToMany(mappedBy = "subscibedCourses")
+  Set<Student> subscriptions;
 
   private String description;
 
