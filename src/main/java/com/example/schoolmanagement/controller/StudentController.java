@@ -11,6 +11,7 @@ import java.util.Optional;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -26,8 +27,10 @@ public class StudentController {
   }
 
   @GetMapping("/{id}")
+  @Transactional(readOnly = true)
   public ResponseEntity<Student> getStudentById(@PathVariable Long id) {
-    Optional<Student> student = studentRepository.findById(id);
+    Optional<Student> student = studentRepository.findByIdWithCoursesAndSchool(id);
+
     return student.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
   }
 

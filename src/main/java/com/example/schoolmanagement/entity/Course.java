@@ -1,8 +1,6 @@
 package com.example.schoolmanagement.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import java.util.Set;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -17,10 +15,6 @@ public class Course {
 
   @Column(nullable = false)
   private String name;
-
-  @ManyToMany(mappedBy = "subscribedCourses", fetch = FetchType.LAZY)
-  @JsonBackReference
-  Set<Student> subscriptions;
 
   private String description;
 

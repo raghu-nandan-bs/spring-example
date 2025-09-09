@@ -1,12 +1,9 @@
 package com.example.schoolmanagement.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.Set;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.DialectOverride;
-import org.hibernate.annotations.FilterJoinTable;
 
 @Data
 @NoArgsConstructor
@@ -37,7 +34,6 @@ public class Student {
       name = "student_course_subscriptions",
       joinColumns = @JoinColumn(name = "student_id"),
       inverseJoinColumns = @JoinColumn(name = "course_id"))
-  @JsonManagedReference
   Set<Course> subscribedCourses;
 
   public Student(String firstName, String lastName, String email, String phoneNumber) {
