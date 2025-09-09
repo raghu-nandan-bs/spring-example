@@ -1,14 +1,14 @@
 package com.example.schoolmanagement.controller;
 
-import com.example.schoolmanagement.entity.Student;
-import com.example.schoolmanagement.entity.Course;
-import com.example.schoolmanagement.repository.StudentRepository;
-import com.example.schoolmanagement.repository.CourseRepository;
 import com.example.schoolmanagement.dto.StudentDto;
+import com.example.schoolmanagement.entity.Course;
+import com.example.schoolmanagement.entity.Student;
+import com.example.schoolmanagement.repository.CourseRepository;
+import com.example.schoolmanagement.repository.StudentRepository;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.HashSet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,12 +33,12 @@ public class StudentController {
 
   @PostMapping
   public Student createStudent(@RequestBody StudentDto studentDto) {
-    Student student = new Student(
-      studentDto.getFirstName(),
-      studentDto.getLastName(), 
-      studentDto.getEmail(),
-      studentDto.getPhoneNumber()
-    );
+    Student student =
+        new Student(
+            studentDto.getFirstName(),
+            studentDto.getLastName(),
+            studentDto.getEmail(),
+            studentDto.getPhoneNumber());
     return studentRepository.save(student);
   }
 
@@ -76,18 +76,19 @@ public class StudentController {
   }
 
   @PostMapping("/{studentId}/courses/{courseId}")
-  public ResponseEntity<Student> addCourseToStudent(@PathVariable Long studentId, @PathVariable Long courseId) {
+  public ResponseEntity<Student> addCourseToStudent(
+      @PathVariable Long studentId, @PathVariable Long courseId) {
     Optional<Student> studentOpt = studentRepository.findById(studentId);
     Optional<Course> courseOpt = courseRepository.findById(courseId);
-    
+
     if (studentOpt.isPresent() && courseOpt.isPresent()) {
       Student student = studentOpt.get();
       Course course = courseOpt.get();
-      
+
       if (student.getSubscibedCourses() == null) {
         student.setSubscibedCourses(new HashSet<>());
       }
-      
+
       student.getSubscibedCourses().add(course);
       return ResponseEntity.ok(studentRepository.save(student));
     }
@@ -95,14 +96,15 @@ public class StudentController {
   }
 
   @DeleteMapping("/{studentId}/courses/{courseId}")
-  public ResponseEntity<Student> removeCourseFromStudent(@PathVariable Long studentId, @PathVariable Long courseId) {
+  public ResponseEntity<Student> removeCourseFromStudent(
+      @PathVariable Long studentId, @PathVariable Long courseId) {
     Optional<Student> studentOpt = studentRepository.findById(studentId);
     Optional<Course> courseOpt = courseRepository.findById(courseId);
-    
+
     if (studentOpt.isPresent() && courseOpt.isPresent()) {
       Student student = studentOpt.get();
       Course course = courseOpt.get();
-      
+
       if (student.getSubscibedCourses() != null) {
         student.getSubscibedCourses().remove(course);
         return ResponseEntity.ok(studentRepository.save(student));

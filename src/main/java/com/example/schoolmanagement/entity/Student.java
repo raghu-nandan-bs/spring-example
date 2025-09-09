@@ -1,7 +1,7 @@
 package com.example.schoolmanagement.entity;
 
-import jakarta.persistence.*;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
 import java.util.Set;
 
 @Entity
@@ -24,10 +24,9 @@ public class Student {
 
   @ManyToMany
   @JoinTable(
-          name = "student_course_subscriptions",
-          joinColumns = @JoinColumn(name = "student_id"),
-          inverseJoinColumns = @JoinColumn(name = "course_id")
-  )
+      name = "student_course_subscriptions",
+      joinColumns = @JoinColumn(name = "student_id"),
+      inverseJoinColumns = @JoinColumn(name = "course_id"))
   @JsonManagedReference
   Set<Course> subscibedCourses;
 

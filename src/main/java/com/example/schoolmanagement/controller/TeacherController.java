@@ -1,8 +1,8 @@
 package com.example.schoolmanagement.controller;
 
+import com.example.schoolmanagement.dto.TeacherDto;
 import com.example.schoolmanagement.entity.Teacher;
 import com.example.schoolmanagement.repository.TeacherRepository;
-import com.example.schoolmanagement.dto.TeacherDto;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,13 +28,13 @@ public class TeacherController {
 
   @PostMapping
   public Teacher createTeacher(@RequestBody TeacherDto teacherDto) {
-    Teacher teacher = new Teacher(
-      teacherDto.getFirstName(),
-      teacherDto.getLastName(),
-      teacherDto.getEmail(),
-      teacherDto.getDepartment(),
-      teacherDto.getPhoneNumber()
-    );
+    Teacher teacher =
+        new Teacher(
+            teacherDto.getFirstName(),
+            teacherDto.getLastName(),
+            teacherDto.getEmail(),
+            teacherDto.getDepartment(),
+            teacherDto.getPhoneNumber());
     return teacherRepository.save(teacher);
   }
 

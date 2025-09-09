@@ -1,9 +1,9 @@
 package com.example.schoolmanagement.controller;
 
+import com.example.schoolmanagement.dto.CourseDto;
 import com.example.schoolmanagement.entity.Course;
 import com.example.schoolmanagement.entity.Student;
 import com.example.schoolmanagement.repository.CourseRepository;
-import com.example.schoolmanagement.dto.CourseDto;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -30,11 +30,8 @@ public class CourseController {
 
   @PostMapping
   public Course createCourse(@RequestBody CourseDto courseDto) {
-    Course course = new Course(
-      courseDto.getName(),
-      courseDto.getDescription(),
-      courseDto.getCredits()
-    );
+    Course course =
+        new Course(courseDto.getName(), courseDto.getDescription(), courseDto.getCredits());
     return courseRepository.save(course);
   }
 
