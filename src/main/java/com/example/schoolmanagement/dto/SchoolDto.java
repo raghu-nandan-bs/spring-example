@@ -7,9 +7,10 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class StudentDto {
-  private String firstName;
-  private String lastName;
-  private String email;
+public class SchoolDto {
+  private String name;
+  private String address;
   private String phoneNumber;
+  private String email;
+  private String principalName;
 }
