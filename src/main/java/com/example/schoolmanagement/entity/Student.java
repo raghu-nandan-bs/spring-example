@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import java.util.Set;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DialectOverride;
+import org.hibernate.annotations.FilterJoinTable;
 
 @Data
 @NoArgsConstructor
@@ -30,13 +32,13 @@ public class Student {
   @JoinColumn(name = "school_id")
   private School school;
 
-  @ManyToMany
+  @ManyToMany(fetch = FetchType.LAZY)
   @JoinTable(
       name = "student_course_subscriptions",
       joinColumns = @JoinColumn(name = "student_id"),
       inverseJoinColumns = @JoinColumn(name = "course_id"))
   @JsonManagedReference
-  Set<Course> subscibedCourses;
+  Set<Course> subscribedCourses;
 
   public Student(String firstName, String lastName, String email, String phoneNumber) {
     this.firstName = firstName;

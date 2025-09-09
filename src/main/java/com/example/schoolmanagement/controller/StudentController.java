@@ -70,7 +70,7 @@ public class StudentController {
   public ResponseEntity<Set<Course>> getStudentCourses(@PathVariable Long id) {
     Optional<Student> student = studentRepository.findById(id);
     if (student.isPresent()) {
-      return ResponseEntity.ok(student.get().getSubscibedCourses());
+      return ResponseEntity.ok(student.get().getSubscribedCourses());
     }
     return ResponseEntity.notFound().build();
   }
@@ -85,11 +85,11 @@ public class StudentController {
       Student student = studentOpt.get();
       Course course = courseOpt.get();
 
-      if (student.getSubscibedCourses() == null) {
-        student.setSubscibedCourses(new HashSet<>());
+      if (student.getSubscribedCourses() == null) {
+        student.setSubscribedCourses(new HashSet<>());
       }
 
-      student.getSubscibedCourses().add(course);
+      student.getSubscribedCourses().add(course);
       return ResponseEntity.ok(studentRepository.save(student));
     }
     return ResponseEntity.notFound().build();
@@ -105,8 +105,8 @@ public class StudentController {
       Student student = studentOpt.get();
       Course course = courseOpt.get();
 
-      if (student.getSubscibedCourses() != null) {
-        student.getSubscibedCourses().remove(course);
+      if (student.getSubscribedCourses() != null) {
+        student.getSubscribedCourses().remove(course);
         return ResponseEntity.ok(studentRepository.save(student));
       }
     }

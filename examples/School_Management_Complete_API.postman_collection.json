@@ -1,0 +1,656 @@
+{
+	"info": {
+		"_postman_id": "school-management-complete-api",
+		"name": "School Management Complete API",
+		"description": "Complete API collection for School Management System with Schools, Courses, Students, Teachers and their relationships",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12345678"
+	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "schoolId",
+			"value": "1",
+			"type": "string"
+		},
+		{
+			"key": "studentId",
+			"value": "1",
+			"type": "string"
+		},
+		{
+			"key": "courseId",
+			"value": "1",
+			"type": "string"
+		},
+		{
+			"key": "teacherId",
+			"value": "1",
+			"type": "string"
+		}
+	],
+	"item": [
+		{
+			"name": "Schools",
+			"description": "CRUD operations for Schools",
+			"item": [
+				{
+					"name": "Create School",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Springfield Elementary School\",\n  \"address\": \"123 School Street, Springfield, IL 62701\",\n  \"phoneNumber\": \"555-123-4567\",\n  \"email\": \"info@springfieldelementary.edu\",\n  \"principalName\": \"Seymour Skinner\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/schools",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "schools"]
+						},
+						"description": "Create a new school"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Schools",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/schools",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "schools"]
+						},
+						"description": "Retrieve all schools"
+					},
+					"response": []
+				},
+				{
+					"name": "Get School by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/schools/{{schoolId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "schools", "{{schoolId}}"]
+						},
+						"description": "Get a specific school by ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Update School",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Springfield High School\",\n  \"address\": \"456 Education Ave, Springfield, IL 62701\",\n  \"phoneNumber\": \"555-987-6543\",\n  \"email\": \"info@springfieldhigh.edu\",\n  \"principalName\": \"Gary Chalmers\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/schools/{{schoolId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "schools", "{{schoolId}}"]
+						},
+						"description": "Update an existing school"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete School",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/schools/{{schoolId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "schools", "{{schoolId}}"]
+						},
+						"description": "Delete a school"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Students",
+			"description": "CRUD operations for Students",
+			"item": [
+				{
+					"name": "Create Student",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"Bart\",\n  \"lastName\": \"Simpson\",\n  \"email\": \"bart.simpson@springfieldelementary.edu\",\n  \"phoneNumber\": \"555-234-5678\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/students",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "students"]
+						},
+						"description": "Create a new student"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Students",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/students",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "students"]
+						},
+						"description": "Retrieve all students"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Student by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/students/{{studentId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "students", "{{studentId}}"]
+						},
+						"description": "Get a specific student by ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Student",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"Lisa\",\n  \"lastName\": \"Simpson\",\n  \"email\": \"lisa.simpson@springfieldelementary.edu\",\n  \"phoneNumber\": \"555-345-6789\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/students/{{studentId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "students", "{{studentId}}"]
+						},
+						"description": "Update an existing student"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Student",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/students/{{studentId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "students", "{{studentId}}"]
+						},
+						"description": "Delete a student"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Student Courses",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/students/{{studentId}}/courses",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "students", "{{studentId}}", "courses"]
+						},
+						"description": "Get all courses a student is enrolled in"
+					},
+					"response": []
+				},
+				{
+					"name": "Enroll Student in Course",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/students/{{studentId}}/courses/{{courseId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "students", "{{studentId}}", "courses", "{{courseId}}"]
+						},
+						"description": "Enroll a student in a specific course"
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Student from Course",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/students/{{studentId}}/courses/{{courseId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "students", "{{studentId}}", "courses", "{{courseId}}"]
+						},
+						"description": "Remove a student from a course"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Courses",
+			"description": "CRUD operations for Courses",
+			"item": [
+				{
+					"name": "Create Course",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Advanced Java Programming\",\n  \"description\": \"Learn advanced Java concepts including Spring Framework, Hibernate, and microservices\",\n  \"credits\": 4\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/courses",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "courses"]
+						},
+						"description": "Create a new course"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Courses",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/courses",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "courses"]
+						},
+						"description": "Retrieve all courses"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Course by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/courses/{{courseId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "courses", "{{courseId}}"]
+						},
+						"description": "Get a specific course by ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Course",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Full Stack Java Development\",\n  \"description\": \"Complete full stack development with Java, Spring Boot, React, and PostgreSQL\",\n  \"credits\": 5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/courses/{{courseId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "courses", "{{courseId}}"]
+						},
+						"description": "Update an existing course"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Course",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/courses/{{courseId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "courses", "{{courseId}}"]
+						},
+						"description": "Delete a course"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Course Students",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/courses/{{courseId}}/students",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "courses", "{{courseId}}", "students"]
+						},
+						"description": "Get all students enrolled in a course"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Teachers",
+			"description": "CRUD operations for Teachers",
+			"item": [
+				{
+					"name": "Create Teacher",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"Dr. Julius\",\n  \"lastName\": \"Hibbert\",\n  \"email\": \"julius.hibbert@springfieldelementary.edu\",\n  \"department\": \"Computer Science\",\n  \"phoneNumber\": \"555-456-7890\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/teachers",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "teachers"]
+						},
+						"description": "Create a new teacher"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Teachers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/teachers",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "teachers"]
+						},
+						"description": "Retrieve all teachers"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Teacher by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/teachers/{{teacherId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "teachers", "{{teacherId}}"]
+						},
+						"description": "Get a specific teacher by ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Teacher",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"Prof. John\",\n  \"lastName\": \"Frink\",\n  \"email\": \"john.frink@springfieldelementary.edu\",\n  \"department\": \"Physics\",\n  \"phoneNumber\": \"555-567-8901\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/teachers/{{teacherId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "teachers", "{{teacherId}}"]
+						},
+						"description": "Update an existing teacher"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Teacher",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/teachers/{{teacherId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "teachers", "{{teacherId}}"]
+						},
+						"description": "Delete a teacher"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Workflow Examples",
+			"description": "Complete workflow examples showing typical usage patterns",
+			"item": [
+				{
+					"name": "01 - Create School First",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Tech University\",\n  \"address\": \"123 Tech Street, Silicon Valley, CA 94043\",\n  \"phoneNumber\": \"555-TECH-001\",\n  \"email\": \"info@techuniversity.edu\",\n  \"principalName\": \"Dr. Jane Smith\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/schools",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "schools"]
+						},
+						"description": "Step 1: Create a school (note the returned ID)"
+					},
+					"response": []
+				},
+				{
+					"name": "02 - Create Course for School",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Spring Boot Mastery\",\n  \"description\": \"Master Spring Boot development with real-world projects\",\n  \"credits\": 3\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/courses",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "courses"]
+						},
+						"description": "Step 2: Create a course (note the returned ID)"
+					},
+					"response": []
+				},
+				{
+					"name": "03 - Create Student",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"Alice\",\n  \"lastName\": \"Johnson\",\n  \"email\": \"alice.johnson@techuniversity.edu\",\n  \"phoneNumber\": \"555-STUDENT-01\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/students",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "students"]
+						},
+						"description": "Step 3: Create a student (note the returned ID)"
+					},
+					"response": []
+				},
+				{
+					"name": "04 - Create Teacher",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"Prof. Bob\",\n  \"lastName\": \"Wilson\",\n  \"email\": \"bob.wilson@techuniversity.edu\",\n  \"department\": \"Computer Science\",\n  \"phoneNumber\": \"555-TEACHER-01\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/teachers",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "teachers"]
+						},
+						"description": "Step 4: Create a teacher (note the returned ID)"
+					},
+					"response": []
+				},
+				{
+					"name": "05 - Enroll Student in Course",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/students/{{studentId}}/courses/{{courseId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "students", "{{studentId}}", "courses", "{{courseId}}"]
+						},
+						"description": "Step 5: Enroll the student in the course (use IDs from previous steps)"
+					},
+					"response": []
+				},
+				{
+					"name": "06 - Verify Enrollment",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/students/{{studentId}}/courses",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "students", "{{studentId}}", "courses"]
+						},
+						"description": "Step 6: Verify the student is enrolled in courses"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

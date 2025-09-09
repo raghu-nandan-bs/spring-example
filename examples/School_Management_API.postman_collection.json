@@ -1,8 +1,8 @@
 {
 	"info": {
-		"_postman_id": "school-management-api",
-		"name": "School Management API",
-		"description": "Complete API collection for managing courses, students, and teachers",
+		"_postman_id": "school-management-api-v3",
+		"name": "School Management API v3",
+		"description": "Complete API collection for managing schools, courses, students, teachers and their relationships",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"variable": [
@@ -14,22 +14,133 @@
 	],
 	"item": [
 		{
+			"name": "Schools",
+			"item": [
+				{
+					"name": "Get All Schools",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/schools",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "schools"]
+						}
+					}
+				},
+				{
+					"name": "Get School by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/schools/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "schools", "1"]
+						}
+					}
+				},
+				{
+					"name": "Create School",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Springfield Elementary School\",\n  \"address\": \"123 School Street, Springfield, IL 62701\",\n  \"phoneNumber\": \"555-123-4567\",\n  \"email\": \"info@springfieldelementary.edu\",\n  \"principalName\": \"Seymour Skinner\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/schools",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "schools"]
+						}
+					}
+				},
+				{
+					"name": "Update School",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Springfield High School\",\n  \"address\": \"456 Education Ave, Springfield, IL 62701\",\n  \"phoneNumber\": \"555-987-6543\",\n  \"email\": \"info@springfieldhigh.edu\",\n  \"principalName\": \"Gary Chalmers\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/schools/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "schools", "1"]
+						}
+					}
+				},
+				{
+					"name": "Delete School",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/schools/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "schools", "1"]
+						}
+					}
+				}
+			]
+		},
+		{
 			"name": "Courses",
 			"item": [
 				{
 					"name": "Get All Courses",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
 						"url": {
 							"raw": "{{baseUrl}}/api/courses",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"courses"
-							]
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "courses"]
 						}
 					}
 				},
@@ -37,17 +148,16 @@
 					"name": "Get Course by ID",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
 						"url": {
 							"raw": "{{baseUrl}}/api/courses/1",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"courses",
-								"1"
-							]
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "courses", "1"]
 						}
 					}
 				},
@@ -59,21 +169,25 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"Java Programming\",\n  \"description\": \"Learn Java basics and advanced concepts\",\n  \"credits\": 3\n}"
+							"raw": "{\n  \"name\": \"Java Programming\",\n  \"description\": \"Learn Java basics and advanced concepts\",\n  \"credits\": 3\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": {
 							"raw": "{{baseUrl}}/api/courses",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"courses"
-							]
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "courses"]
 						}
 					}
 				},
@@ -85,22 +199,25 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"Advanced Java Programming\",\n  \"description\": \"Advanced Java concepts including Spring Framework\",\n  \"credits\": 4\n}"
+							"raw": "{\n  \"name\": \"Advanced Java Programming\",\n  \"description\": \"Advanced Java concepts including Spring Framework\",\n  \"credits\": 4\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": {
 							"raw": "{{baseUrl}}/api/courses/1",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"courses",
-								"1"
-							]
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "courses", "1"]
 						}
 					}
 				},
@@ -111,14 +228,25 @@
 						"header": [],
 						"url": {
 							"raw": "{{baseUrl}}/api/courses/1",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"courses",
-								"1"
-							]
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "courses", "1"]
+						}
+					}
+				},
+				{
+					"name": "Get Course Students",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/courses/1/students",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "courses", "1", "students"]
 						}
 					}
 				}
@@ -131,16 +259,16 @@
 					"name": "Get All Students",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
 						"url": {
 							"raw": "{{baseUrl}}/api/students",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"students"
-							]
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "students"]
 						}
 					}
 				},
@@ -148,17 +276,16 @@
 					"name": "Get Student by ID",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
 						"url": {
 							"raw": "{{baseUrl}}/api/students/1",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"students",
-								"1"
-							]
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "students", "1"]
 						}
 					}
 				},
@@ -170,21 +297,25 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"email\": \"john.doe@example.com\",\n  \"phoneNumber\": \"123-456-7890\"\n}"
+							"raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"email\": \"john.doe@example.com\",\n  \"phoneNumber\": \"123-456-7890\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": {
 							"raw": "{{baseUrl}}/api/students",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"students"
-							]
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "students"]
 						}
 					}
 				},
@@ -196,22 +327,25 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"firstName\": \"Jane\",\n  \"lastName\": \"Smith\",\n  \"email\": \"jane.smith@example.com\",\n  \"phoneNumber\": \"098-765-4321\"\n}"
+							"raw": "{\n  \"firstName\": \"Jane\",\n  \"lastName\": \"Smith\",\n  \"email\": \"jane.smith@example.com\",\n  \"phoneNumber\": \"098-765-4321\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": {
 							"raw": "{{baseUrl}}/api/students/1",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"students",
-								"1"
-							]
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "students", "1"]
 						}
 					}
 				},
@@ -222,14 +356,54 @@
 						"header": [],
 						"url": {
 							"raw": "{{baseUrl}}/api/students/1",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"students",
-								"1"
-							]
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "students", "1"]
+						}
+					}
+				},
+				{
+					"name": "Get Student Courses",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/students/1/courses",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "students", "1", "courses"]
+						}
+					}
+				},
+				{
+					"name": "Add Course to Student",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/students/1/courses/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "students", "1", "courses", "1"]
+						}
+					}
+				},
+				{
+					"name": "Remove Course from Student",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/students/1/courses/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "students", "1", "courses", "1"]
 						}
 					}
 				}
@@ -242,16 +416,16 @@
 					"name": "Get All Teachers",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
 						"url": {
 							"raw": "{{baseUrl}}/api/teachers",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"teachers"
-							]
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "teachers"]
 						}
 					}
 				},
@@ -259,17 +433,16 @@
 					"name": "Get Teacher by ID",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
 						"url": {
 							"raw": "{{baseUrl}}/api/teachers/1",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"teachers",
-								"1"
-							]
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "teachers", "1"]
 						}
 					}
 				},
@@ -281,21 +454,25 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"firstName\": \"Dr. Alice\",\n  \"lastName\": \"Johnson\",\n  \"email\": \"alice.johnson@example.com\",\n  \"department\": \"Computer Science\",\n  \"phoneNumber\": \"555-123-4567\"\n}"
+							"raw": "{\n  \"firstName\": \"Dr. Alice\",\n  \"lastName\": \"Johnson\",\n  \"email\": \"alice.johnson@example.com\",\n  \"department\": \"Computer Science\",\n  \"phoneNumber\": \"555-123-4567\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": {
 							"raw": "{{baseUrl}}/api/teachers",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"teachers"
-							]
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "teachers"]
 						}
 					}
 				},
@@ -307,22 +484,25 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"firstName\": \"Prof. Bob\",\n  \"lastName\": \"Wilson\",\n  \"email\": \"bob.wilson@example.com\",\n  \"department\": \"Mathematics\",\n  \"phoneNumber\": \"555-987-6543\"\n}"
+							"raw": "{\n  \"firstName\": \"Prof. Bob\",\n  \"lastName\": \"Wilson\",\n  \"email\": \"bob.wilson@example.com\",\n  \"department\": \"Mathematics\",\n  \"phoneNumber\": \"555-987-6543\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": {
 							"raw": "{{baseUrl}}/api/teachers/1",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"teachers",
-								"1"
-							]
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "teachers", "1"]
 						}
 					}
 				},
@@ -333,14 +513,8 @@
 						"header": [],
 						"url": {
 							"raw": "{{baseUrl}}/api/teachers/1",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"teachers",
-								"1"
-							]
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "teachers", "1"]
 						}
 					}
 				}

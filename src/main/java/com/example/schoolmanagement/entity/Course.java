@@ -18,7 +18,7 @@ public class Course {
   @Column(nullable = false)
   private String name;
 
-  @ManyToMany(mappedBy = "subscibedCourses")
+  @ManyToMany(mappedBy = "subscribedCourses", fetch = FetchType.LAZY)
   @JsonBackReference
   Set<Student> subscriptions;
 
